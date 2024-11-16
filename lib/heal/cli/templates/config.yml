@@ -1,0 +1,12 @@
+git:
+  directories:
+    - ~/Projects
+  branch:
+    targets:
+      development: dev
+      test: integration
+      release: master
+    prefix: issue
+  repos:
+    - ~/Projects/enlighten_manager_mvc
+  pr_link: https://bitbucket.org/enphaseembedded/%s/pull-requests/new?source=%s&dest=%s/

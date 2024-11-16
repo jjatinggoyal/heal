@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'heal'
+
+Heal::Cli::Main.start(ARGV)
