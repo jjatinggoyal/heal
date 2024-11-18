@@ -39,20 +39,41 @@ To install the Heal CLI, follow these steps:
     heal config
     ```
 
-### Git Commands
+### Commands
 
-- **`git delivery ISSUE_ID`**: 
+- **`delivery`**: 
   - **Description**: Delivers an issue to the test environment by checking out the relevant branches and cherry-picking commits associated with the specified issue ID.
   - **Usage**: 
     ```bash
-    heal git delivery <ISSUE_ID>
+    heal delivery
     ```
 
-- **`git release EPIC_ID`**: 
-  - **Description**: Releases an EPIC to a production-ready branch. (Currently not implemented.)
+- **`release`**: 
+  - **Description**: Releases a feature to a production-ready branch by cherry-picking commits from issues under an EPIC.
   - **Usage**: 
     ```bash
-    heal git release <EPIC_ID>
+    heal release
+    ```
+
+- **`git cherry-pick-pr COMMIT_MESSAGE_IDENTIFIER REPO SOURCE_BRANCH TARGET_BRANCH THROWAWAY_BRANCH`**: 
+  - **Description**: Cherry picks a PR based on a commit message identifier (like a JIRA key), source repository, source branch, target branch, and a throwaway branch used for creating a PR to the target branch.
+  - **Usage**: 
+    ```bash
+    heal git cherry-pick-pr <COMMIT_MESSAGE_IDENTIFIER> <REPO> <SOURCE_BRANCH> <TARGET_BRANCH> <THROWAWAY_BRANCH>
+    ```
+
+- **`git find-commits COMMIT_MESSAGE_IDENTIFIER`**: 
+  - **Description**: Finds commit IDs based on an identifier in the commit message.
+  - **Usage**: 
+    ```bash
+    heal git find-commits <COMMIT_MESSAGE_IDENTIFIER>
+    ```
+
+- **`git create-pr REPO_NAME SOURCE_BRANCH TO_BRANCH`**: 
+  - **Description**: Creates a PR from a source branch to a target branch in the specified repository.
+  - **Usage**: 
+    ```bash
+    heal git create-pr <REPO_NAME> <SOURCE_BRANCH> <TO_BRANCH>
     ```
 
 ## Configuration File
@@ -84,6 +105,7 @@ git:
     targets:
       test: "test-branch"
       development: "dev-branch"
+      release: "release-branch"
 ```
 
 ## Usage
@@ -91,10 +113,10 @@ git:
 To use the Heal CLI, simply run the command followed by the desired subcommand. For example:
 
 ```bash
-heal git delivery JIRA-123
+heal delivery
 ```
 
-This command will initiate the delivery process for the issue with ID JIRA-123.
+This command will initiate the delivery process for the issue with the ID prompted by the user.
 
 ## Development
 
