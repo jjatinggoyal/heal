@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    heal (0.0.1)
+    heal (0.0.2)
       thor (~> 1.0)
       tty-prompt (~> 0.23.1)
       zeitwerk (>= 2.6.18, < 3.0)
